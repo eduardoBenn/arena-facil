@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  frontend:
+    container_name: frontend-dev
+    image: frontend-dev
+    build:
+      context: .
+      dockerfile: frontend/Dockerfile
+      target: development
+    volumes:
+      - ./frontend/src/:/app/frontend/src/
+    ports:
+      - 3000:3000
+    networks:
+      default:
+        aliases:
+          - arena-facil-frontend.apps.internal
