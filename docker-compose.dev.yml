@@ -6,10 +6,10 @@ services:
     image: frontend-dev
     build:
       context: .
-      dockerfile: frontend/Dockerfile
+      dockerfile: front/Dockerfile
       target: development
     volumes:
-      - ./frontend/src/:/app/frontend/src/
+      - ./front/src/:/app/front/src/
     ports:
       - 3000:3000
     networks:
