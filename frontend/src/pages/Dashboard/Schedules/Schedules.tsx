@@ -1,4 +1,3 @@
 export const Schedules = () => {
-    return <div>Schedules</div>;
-  };
-  
+  return <div>schedules</div>;
+};
