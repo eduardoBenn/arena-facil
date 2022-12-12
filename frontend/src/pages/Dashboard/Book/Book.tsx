@@ -1,7 +1,10 @@
+import * as React from "react";
+import dayjs, { Dayjs } from "dayjs";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import { Button } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
+// import { DesktopDatePicker } from "@mui/x-date-pickers/DesktopDatePicker";
 
 export const Book = () => {
   const columns: GridColDef[] = [
@@ -28,39 +31,47 @@ export const Book = () => {
     { id: "2", day: "04/12/2022", start: "18:30", end: "19:30" },
   ];
 
+  const [value, setValue] = React.useState<Dayjs | null>(
+    dayjs("2014-08-18T21:11:54")
+  );
+
+  const handleChange = (newValue: Dayjs | null) => {
+    setValue(newValue);
+  };
+
   return (
-    <>
-      <Box
-        component="form"
-        sx={{
-          "& .MuiTextField-root": { m: 1, width: "25ch" },
+    <div>
+      <h1>Horários disponiveis</h1>
+
+      {/* <DesktopDatePicker
+        label="Selecionar a data de reserva"
+        value={value}
+        minDate={dayjs("2017-01-01")}
+        onChange={(newValue: any) => {
+          setValue(newValue);
         }}
-        noValidate
-        autoComplete="off"
-      >
-        <div>
-          <TextField required id="day" label="dia" />
-          <TextField required id="begin" label="Horário inicio" />
-          <TextField required id="end" label="Horário fim" />
-        </div>
-        <div style={{ marginTop: "1ch" }}>
-          <Button variant={"outlined"}>Reset</Button>
-          <Button>Submit</Button>
-        </div>
+        renderInput={(params: any) => <TextField {...params} />}
+      /> */}
+
+      <label>
+        Filtrar horário
+        <input type="date" style={{ margin: "5px" }} />
+      </label>
+
+      <Box sx={{ height: 400, width: "100%", marginTop: "5ch" }}>
+        <DataGrid
+          rows={rows}
+          checkboxSelection
+          columns={columns}
+          rowsPerPageOptions={[5]}
+          disableSelectionOnClick
+          experimentalFeatures={{ newEditingApi: true }}
+        />
       </Box>
 
-      <div style={{ marginTop: "5ch" }}>
-        <h1>Horários</h1>
-        <Box sx={{ height: 400, width: "100%" }}>
-          <DataGrid
-            rows={rows}
-            columns={columns}
-            rowsPerPageOptions={[5]}
-            disableSelectionOnClick
-            experimentalFeatures={{ newEditingApi: true }}
-          />
-        </Box>
+      <div style={{ marginTop: "1ch", float: "right" }}>
+        <Button>Reservar</Button>
       </div>
-    </>
+    </div>
   );
 };

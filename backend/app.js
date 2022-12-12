@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const user_routes = require("./routes/user");
+const book_routes = require("./routes/book");
 
 const app = express();
 app.use(bodyParser.json());
@@ -20,6 +21,7 @@ app.get("/", async (req, res) => {
 });
 
 app.use("/api/users", user_routes);
+app.use("/api/book", book_routes);
 
 mongoose.connect(
   `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/${process.env.MONGODB_NAME}?retryWrites=true&w=majority`,
