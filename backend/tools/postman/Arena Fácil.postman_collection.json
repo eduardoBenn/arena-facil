@@ -1,0 +1,311 @@
+{
+	"info": {
+		"_postman_id": "3d807375-b095-49b7-bfbd-c64e8b1da2c9",
+		"name": "Arena Fácil",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "update",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"eduardo9999\",\n\"email\": \"edu2@edu.com\",\n\"password\":\"1234\",\n\"admin\": true,\n\"cpf\":\"000.000.000-00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/638d25b4ba32ed01ce795100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"638d25b4ba32ed01ce795100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"eduardo9999\",\n\"email\": \"edu2@edu.com\",\n\"password\":\"1234\",\n\"admin\": true,\n\"cpf\":\"000.000.000-00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/638d25b4ba32ed01ce795100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"638d25b4ba32ed01ce795100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"eduardo9999\",\n\"email\": \"edu2@edu.com\",\n\"password\":\"1234\",\n\"admin\": true,\n\"cpf\":\"000.000.000-00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users/638d25b4ba32ed01ce795100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users",
+								"638d25b4ba32ed01ce795100"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "create",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"name\": \"eduardo2\",\n\"email\": \"edu2@edu.com\",\n\"password\":\"123\",\n\"admin\": true,\n\"cpf\":\"000.000.000-00\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {},
+						"url": {
+							"raw": "http://localhost:8080/api/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"users"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Book",
+			"item": [
+				{
+					"name": "post",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"timestart\": \"Dec 04 2022 18:30\",\n\"timeend\": \"Dec 04 2022 19:30\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/book",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"timestart\": \"Dec 04 2022 18:30\",\n\"timeend\": \"Dec 04 2022 19:30\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/book",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"book"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "put",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"timestart\": \"Dec 04 2022 17:30\",\n\"timeend\": \"Dec 04 2022 19:30\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/book/638d4e597178a90020aa990f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"book",
+								"638d4e597178a90020aa990f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"timestart\": \"Dec 04 2022 18:30\",\n\"timeend\": \"Dec 04 2022 19:30\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/book/638d4e597178a90020aa990f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"book",
+								"638d4e597178a90020aa990f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get one",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"timestart\": \"Dec 04 2022 18:30\",\n\"timeend\": \"Dec 04 2022 19:30\"\n}"
+						},
+						"url": {
+							"raw": "http://localhost:8080/api/book/638d4e597178a90020aa990f",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"api",
+								"book",
+								"638d4e597178a90020aa990f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Schedule",
+			"item": []
+		}
+	]
+}
