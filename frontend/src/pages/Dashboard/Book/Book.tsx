@@ -1,16 +1,20 @@
-import * as React from "react";
+import { useState } from "react";
 import { Dayjs } from "dayjs";
 import { DataGrid } from "@mui/x-data-grid";
 import { Button, Grid, Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import TextField from "@mui/material/TextField";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
-import { columns } from "./BookUtils";
+import { buildBookRows, columns, fetchBooks } from "./BookUtils";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
+import { BookType } from "./types";
+import { useQuery } from "react-query";
 
 export const Book = () => {
-  const [value, setValue] = React.useState<Dayjs | null>(null);
+  const [value, setValue] = useState<Dayjs | null>(null);
+  const { data } = useQuery<BookType[]>("bookList", fetchBooks);
+  const books = buildBookRows(data || []);
 
   return (
     <Grid container spacing={2}>
@@ -34,7 +38,7 @@ export const Book = () => {
       <Grid xs={12}>
         <Box sx={{ height: 400, width: "100%", marginTop: "5ch" }}>
           <DataGrid
-            rows={[]}
+            rows={books}
             checkboxSelection
             columns={columns}
             rowsPerPageOptions={[5]}

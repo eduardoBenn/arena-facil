@@ -1,4 +1,6 @@
 import { GridColDef } from "@mui/x-data-grid";
+import axios from "axios";
+import { BookType } from "./types";
 
 export const columns: GridColDef[] = [
   {
@@ -18,3 +20,21 @@ export const columns: GridColDef[] = [
     width: 150,
   },
 ];
+
+export const fetchBooks = async (): Promise<BookType[]> => {
+  const response = await axios.get("http://localhost:8080/api/book");
+  return response.data.result;
+};
+
+export const buildBookRows = (books: BookType[]) => {
+  return (
+    books?.map((book) => {
+      return {
+        id: book._id,
+        day: new Date(book.timeend).toLocaleDateString("pt-BR"),
+        start: new Date(book.timestart).toLocaleTimeString("pt-BR"),
+        end: new Date(book.timeend).toLocaleTimeString("pt-BR"),
+      };
+    }) || []
+  );
+};
