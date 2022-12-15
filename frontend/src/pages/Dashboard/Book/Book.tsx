@@ -13,8 +13,16 @@ import { useQuery } from "react-query";
 
 export const Book = () => {
   const [value, setValue] = useState<Dayjs | null>(null);
+  const [selectedBook, setSelectedBook] = useState<string | number>();
   const { data } = useQuery<BookType[]>("bookList", fetchBooks);
   const books = buildBookRows(data || []);
+
+  const submitBooking = () => {
+    if (selectedBook && data) {
+      const item = data.filter((book) => book._id === selectedBook);
+      console.log(item);
+    }
+  };
 
   return (
     <Grid container spacing={2}>
@@ -39,17 +47,18 @@ export const Book = () => {
         <Box sx={{ height: 400, width: "100%", marginTop: "5ch" }}>
           <DataGrid
             rows={books}
-            checkboxSelection
             columns={columns}
             rowsPerPageOptions={[5]}
-            disableSelectionOnClick
             experimentalFeatures={{ newEditingApi: true }}
+            onRowClick={(row) => setSelectedBook(row.id)}
           />
         </Box>
       </Grid>
 
       <div style={{ marginTop: "1ch", float: "right" }}>
-        <Button>Reservar</Button>
+        <Button onClick={submitBooking} disabled={!selectedBook}>
+          Reservar
+        </Button>
       </div>
     </Grid>
   );
