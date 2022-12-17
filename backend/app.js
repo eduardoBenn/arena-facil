@@ -1,11 +1,14 @@
 const express = require("express");
+
+const dbConnect = require("./db/connect");
 const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
 const user_routes = require("./routes/user");
 const book_routes = require("./routes/book");
+const auth_routes = require("./routes/auth");
+const auth = require("./auth");
 
 const app = express();
-app.use(bodyParser.json());
+dbConnect();
 
 app.use((req, res, next) => {
   res.setHeader("Access-Control-Allow-Origin", "*");
@@ -14,28 +17,25 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 app.get("/", async (req, res) => {
-  res.status(200).json({
-    deuboa: "true",
-  });
+  res.status(200).json({ message: "welcome" });
 });
 
+app.use("/api/auth", auth_routes);
 app.use("/api/users", user_routes);
 app.use("/api/book", book_routes);
 
-mongoose.connect(
-  `mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@${process.env.MONGODB_URL}/${process.env.MONGODB_NAME}?retryWrites=true&w=majority`,
-  {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-  },
-  (err) => {
-    if (err) {
-      console.error("FAILED TO CONNECT TO MONGODB");
-      console.error(err);
-    } else {
-      console.log("CONNECTED TO MONGODB!!");
-      app.listen(8080);
-    }
-  }
-);
+// free endpoint
+app.get("/free-endpoint", (request, response) => {
+  response.json({ message: "You are free to access me anytime" });
+});
+
+// authentication endpoint
+app.get("/auth-endpoint", auth, (request, response) => {
+  response.send({ message: "You are authorized to access me" });
+});
+
+app.listen(8080);

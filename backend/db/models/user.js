@@ -9,6 +9,12 @@ const userSchema = new Schema({
     maxlength: 80,
     minlength: 3,
   },
+  lastname: {
+    type: String,
+    required: true,
+    maxlength: 80,
+    minlength: 3,
+  },
   email: {
     type: String,
     unique: true,
@@ -23,7 +29,7 @@ const userSchema = new Schema({
   },
   admin: {
     type: Boolean,
-    required: true,
+    required: false,
   },
   cpf: {
     type: String,

@@ -10,17 +10,37 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
+import axios from "axios";
+import { environmentVariables as env } from "../../utils/environment-utils";
 
 const theme = createTheme();
 
 export const CreateAccount = () => {
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get("email"),
-      password: data.get("password"),
-    });
+    const formData = new FormData(event.currentTarget);
+    const data = {
+      name: formData.get("name"),
+      lastname: formData.get("lastname"),
+      cpf: formData.get("cpf"),
+      email: formData.get("email"),
+      password: formData.get("password"),
+    };
+
+    const configuration = {
+      method: "post",
+      url: `${env}/api/auth/register/`,
+      data,
+    };
+
+    axios(configuration)
+      .then((result) => {
+        console.log(result.data);
+        console.log(result.status);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
@@ -50,12 +70,12 @@ export const CreateAccount = () => {
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6}>
                 <TextField
-                  autoComplete="given-name"
-                  name="firstName"
+                  autoComplete="new-nome"
+                  name="name"
                   required
                   fullWidth
-                  id="firstName"
-                  label="First Name"
+                  id="name"
+                  label="Nome"
                   autoFocus
                 />
               </Grid>
@@ -63,10 +83,20 @@ export const CreateAccount = () => {
                 <TextField
                   required
                   fullWidth
-                  id="lastName"
-                  label="Last Name"
-                  name="lastName"
-                  autoComplete="family-name"
+                  id="lastname"
+                  label="Sobrenome"
+                  name="lastname"
+                  autoComplete="new-sobrenome"
+                />
+              </Grid>
+              <Grid item xs={12}>
+                <TextField
+                  required
+                  fullWidth
+                  id="cpf"
+                  label="CPF"
+                  name="cpf"
+                  autoComplete="new-cpf"
                 />
               </Grid>
               <Grid item xs={12}>
@@ -74,7 +104,7 @@ export const CreateAccount = () => {
                   required
                   fullWidth
                   id="email"
-                  label="Email Address"
+                  label="E-mail"
                   name="email"
                   autoComplete="email"
                 />

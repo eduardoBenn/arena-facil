@@ -1,5 +1,6 @@
 import { GridColDef } from "@mui/x-data-grid";
 import axios from "axios";
+import { environmentVariables as env } from "../../../utils/environment-utils";
 import { BookType } from "./types";
 
 export const columns: GridColDef[] = [
@@ -22,7 +23,7 @@ export const columns: GridColDef[] = [
 ];
 
 export const fetchBooks = async (): Promise<BookType[]> => {
-  const response = await axios.get("http://localhost:8080/api/book");
+  const response = await axios.get(`${env}/api/book`);
   return response.data.result;
 };
 
