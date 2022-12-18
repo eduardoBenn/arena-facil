@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useQuery } from "react-query";
-import { environmentVariables } from "../../utils/environment-utils";
+import { environmentVariables } from "../utils/environment-utils";
 import Cookies from "universal-cookie";
 
 export const useQueryUserPermission = () => {

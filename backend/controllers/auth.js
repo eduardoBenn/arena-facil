@@ -3,7 +3,6 @@ const User = require("../db/models/user");
 const jwt = require("jsonwebtoken");
 
 const permission = async (request, response) => {
-  console.log("caiu");
   try {
     const token = await request.headers.authorization.split(" ")[1];
     const decodedToken = await jwt.verify(token, "RANDOM-TOKEN");
@@ -73,7 +72,6 @@ const login = (request, response) => {
             {
               userId: user._id,
               userEmail: user.email,
-              userAdmin: user.admin,
             },
             "RANDOM-TOKEN",
             { expiresIn: "24h" }

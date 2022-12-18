@@ -1,3 +1,3 @@
-export type DashboardTypes = {
-  admin?: boolean;
+export type DashboardProps = {
+  user: string;
 };

@@ -2,7 +2,7 @@ export const MenuItens = [
   {
     itemText: "Usuários",
     url: "/dashboard/users",
-    isAdmin: false,
+    isAdmin: true,
   },
   {
     itemText: "Horários",

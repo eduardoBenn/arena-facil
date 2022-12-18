@@ -8,7 +8,7 @@ import { Book } from "../../pages/Dashboard/Book";
 import { Account } from "../../pages/Dashboard/Account";
 import { CreateAccount } from "../../pages/CreateAccount";
 import { ErrorPage } from "../../pages/ErrorPage";
-import { useQueryUserPermission } from "../queries/useQueryUserPermission";
+import { useQueryUserPermission } from "../../queries/useQueryUserPermission";
 import { AuthorizeRoute } from "./AuthorizeRoute";
 
 export const AppRoutes = () => {
@@ -28,7 +28,7 @@ export const AppRoutes = () => {
               path="dashboard"
               element={
                 <AuthorizeRoute allowed={data}>
-                  <Dashboard />
+                  <Dashboard user={data.userId} />
                 </AuthorizeRoute>
               }
             >
