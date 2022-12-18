@@ -17,7 +17,7 @@ export const Dashboard = (props: DashboardProps) => {
       {!isLoading && (
         <>
           <MenuAdmin admin={data.admin} />
-          <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
+          <Box component="main" style={{ width: "100%", padding: "2em" }}>
             <Toolbar />
             <Outlet />
           </Box>

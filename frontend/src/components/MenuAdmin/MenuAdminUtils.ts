@@ -13,7 +13,7 @@ export const UserItens = [
 
 export const AdminItens = [
   {
-    itemText: "Minha conta",
+    itemText: "Usuários",
     url: "/dashboard/account",
     isAdmin: true,
   },

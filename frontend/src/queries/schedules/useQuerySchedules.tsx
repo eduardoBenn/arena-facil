@@ -9,3 +9,11 @@ export const useQuerySchedules = (userId: string) => {
       .then((res) => res.data);
   });
 };
+
+export const useQueryAllSchedules = () => {
+  return useQuery(["getAllSchedules"], () => {
+    return axios
+      .get(`${environmentVariables.API_URL}/api/schedule/`)
+      .then((res) => res.data);
+  });
+};

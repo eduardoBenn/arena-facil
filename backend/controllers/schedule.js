@@ -1,5 +1,6 @@
 const Schedule = require("../db/models/schedule");
 const Book = require("../db/models/book");
+const User = require("../db/models/user");
 
 const getSchedules = (req, res) => {
   Schedule.find({})
