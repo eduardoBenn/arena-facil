@@ -6,17 +6,17 @@ export const MenuItens = [
   },
   {
     itemText: "Horários",
-    url: "/dashboard/schedules",
+    url: "/dashboard/book",
     isAdmin: false,
   },
   {
     itemText: "Reservas",
-    url: "/dashboard/book",
+    url: "/dashboard/schedules",
     isAdmin: false,
   },
   {
     itemText: "Minha conta",
     url: "/dashboard/account",
-    isAdmin: false,
+    isAdmin: true,
   },
 ];

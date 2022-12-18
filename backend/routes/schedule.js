@@ -1,15 +1,15 @@
-const mongoose = require("mongoose");
+const express = require("express");
+const {
+  addSchedule,
+  getSchedules,
+  deleteSchedule,
+  getSchedule,
+} = require("../controllers/schedule");
+const router = express.Router();
 
-const Schema = mongoose.Schema;
+router.get("/", getSchedules);
+router.post("/", addSchedule);
+router.get("/:bookID", getSchedule);
+router.delete("/:bookID", deleteSchedule);
 
-const scheduleSchema = new Schema({
-  timestart: {
-    type: Date,
-    default: Date.now,
-    required: true,
-  },
-  timeend: { type: Date, default: Date.now, required: true },
-});
-
-const ScheduleModel = mongoose.model("Book", scheduleSchema);
-module.exports = ScheduleModel;
+module.exports = router;

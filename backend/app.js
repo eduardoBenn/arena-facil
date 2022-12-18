@@ -4,6 +4,7 @@ const dbConnect = require("./db/connect");
 const bodyParser = require("body-parser");
 const user_routes = require("./routes/user");
 const book_routes = require("./routes/book");
+const schedule_routes = require("./routes/schedule");
 const auth_routes = require("./routes/auth");
 
 const app = express();
@@ -32,5 +33,6 @@ app.get("/", async (req, res) => {
 app.use("/api/auth", auth_routes);
 app.use("/api/users", user_routes);
 app.use("/api/book", book_routes);
+app.use("/api/schedule", schedule_routes);
 
 app.listen(8080);
