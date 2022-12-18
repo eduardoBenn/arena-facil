@@ -3,12 +3,11 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const scheduleSchema = new Schema({
-  book: {
+  user: {
     type: String,
     required: true,
-    unique: true,
   },
-  user: {
+  book: {
     type: String,
     required: true,
     unique: true,

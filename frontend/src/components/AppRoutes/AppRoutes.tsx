@@ -34,7 +34,7 @@ export const AppRoutes = () => {
             >
               <Route path="users" element={<Users />} />
               <Route path="schedules" element={<Schedules />} />
-              <Route path="book" element={<Book />} />
+              <Route path="book" element={<Book user={data?.userId} />} />
               <Route path="account" element={<Account />} />
             </Route>
 

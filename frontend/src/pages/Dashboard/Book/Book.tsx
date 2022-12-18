@@ -8,20 +8,36 @@ import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { buildBookRows, columns, fetchBooks } from "./BookUtils";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { BookType } from "./types";
+import { BookProps, BookType } from "./types";
 import { useQuery } from "react-query";
+import axios from "axios";
+import { environmentVariables } from "../../../utils/environment-utils";
 
-export const Book = () => {
+export const Book = (props: BookProps) => {
   const [value, setValue] = useState<Dayjs | null>(null);
   const [selectedBook, setSelectedBook] = useState<string | number>();
   const { data } = useQuery<BookType[]>("bookList", fetchBooks);
   const books = buildBookRows(data || []);
 
   const submitBooking = () => {
-    if (selectedBook && data) {
-      const item = data.filter((book) => book._id === selectedBook);
-      console.log(item);
-    }
+    const conf = {
+      method: "post",
+      url: `${environmentVariables.API_URL}/api/schedule`,
+      data: {
+        user: props.user,
+        book: selectedBook,
+      },
+    };
+
+    console.log(conf);
+
+    axios(conf)
+      .then((a) => {
+        console.log("success", a);
+      })
+      .catch((e) => {
+        console.log("error", e);
+      });
   };
 
   return (

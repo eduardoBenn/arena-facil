@@ -3,3 +3,7 @@ export type BookType = {
   timestart: string;
   timeend: string;
 };
+
+export type BookProps = {
+  user: string;
+};
