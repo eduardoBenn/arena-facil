@@ -1,9 +1,4 @@
-export const MenuItens = [
-  {
-    itemText: "Usuários",
-    url: "/dashboard/users",
-    isAdmin: true,
-  },
+export const UserItens = [
   {
     itemText: "Horários",
     url: "/dashboard/book",
@@ -14,9 +9,22 @@ export const MenuItens = [
     url: "/dashboard/schedules",
     isAdmin: false,
   },
+];
+
+export const AdminItens = [
   {
     itemText: "Minha conta",
     url: "/dashboard/account",
+    isAdmin: true,
+  },
+  {
+    itemText: "Manter horários",
+    url: "/dashboard/matches",
+    isAdmin: true,
+  },
+  {
+    itemText: "Reservas",
+    url: "/dashboard/reservation",
     isAdmin: true,
   },
 ];

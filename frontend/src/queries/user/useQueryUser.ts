@@ -9,3 +9,11 @@ export const useQueryUser = (userId: string) => {
       .then((res) => res.data.result);
   });
 };
+
+export const useQueryMyUser = (userId: string) => {
+  return useQuery(["getMyUser"], () => {
+    return axios
+      .get(`${environmentVariables.API_URL}/api/users/${userId}`)
+      .then((res) => res.data.result);
+  });
+};

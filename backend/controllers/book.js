@@ -1,7 +1,17 @@
 const Book = require("../db/models/book");
+const Schedule = require("../db/models/schedule");
 
 const getBooks = (req, res) => {
   Book.find({})
+    .then((result) => res.status(200).json({ result }))
+    .catch((error) => res.status(500).json({ msg: error }));
+};
+
+const getAvailableBooks = async (req, res) => {
+  const schedules = await Schedule.find({});
+  const scheduledBooks = schedules.map((schedule) => schedule.book);
+
+  Book.find({ _id: { $nin: scheduledBooks } })
     .then((result) => res.status(200).json({ result }))
     .catch((error) => res.status(500).json({ msg: error }));
 };
@@ -39,4 +49,5 @@ module.exports = {
   updateBook,
   createBook,
   deleteBook,
+  getAvailableBooks,
 };

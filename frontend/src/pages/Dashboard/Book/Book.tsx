@@ -29,11 +29,10 @@ export const Book = (props: BookProps) => {
       },
     };
 
-    console.log(conf);
-
     axios(conf)
       .then((a) => {
-        console.log("success", a);
+        alert("agendado");
+        window.location.reload();
       })
       .catch((e) => {
         console.log("error", e);

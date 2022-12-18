@@ -7,13 +7,14 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import InboxIcon from "@mui/icons-material/MoveToInbox";
 import Toolbar from "@mui/material/Toolbar/Toolbar";
-import { MenuItens } from "./MenuAdminUtils";
+import { AdminItens, UserItens } from "./MenuAdminUtils";
 import { Link } from "react-router-dom";
 import { MenuAdminProps } from "./types";
 
 export const MenuAdmin = (props: MenuAdminProps) => {
   const { admin } = props;
   const drawerWidth = 240;
+  const menuItens = admin ? AdminItens : UserItens;
 
   return (
     <Drawer
@@ -30,11 +31,7 @@ export const MenuAdmin = (props: MenuAdminProps) => {
       <Toolbar />
       <Box sx={{ overflow: "auto" }}>
         <List>
-          {MenuItens.map((item, index) => {
-            if (item.isAdmin && !admin) {
-              return;
-            }
-
+          {menuItens.map((item, index) => {
             return (
               <ListItem key={index} disablePadding>
                 <ListItemButton>
