@@ -29,14 +29,13 @@ export const CreateAccount = () => {
 
     const configuration = {
       method: "post",
-      url: `${env}/api/auth/register/`,
+      url: `${env.API_URL}/api/auth/register/`,
       data,
     };
 
     axios(configuration)
-      .then((result) => {
-        console.log(result.data);
-        console.log(result.status);
+      .then(() => {
+        window.location.href = "/login";
       })
       .catch((error) => {
         console.log(error);

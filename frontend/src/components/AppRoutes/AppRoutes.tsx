@@ -8,24 +8,40 @@ import { Book } from "../../pages/Dashboard/Book";
 import { Account } from "../../pages/Dashboard/Account";
 import { CreateAccount } from "../../pages/CreateAccount";
 import { ErrorPage } from "../../pages/ErrorPage";
+import { useQueryUserPermission } from "../queries/useQueryUserPermission";
+import { AuthorizeRoute } from "./AuthorizeRoute";
 
 export const AppRoutes = () => {
-  return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="login" element={<Login />} />
-        <Route path="account" element={<CreateAccount />} />
+  const { data, isLoading } = useQueryUserPermission();
 
-        <Route path="dashboard" element={<Dashboard />}>
-          <Route path="users" element={<Users />} />
-          <Route path="schedules" element={<Schedules />} />
-          <Route path="book" element={<Book />} />
-          <Route path="account" element={<Account />} />
-        </Route>
-        
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-    </BrowserRouter>
+  return (
+    <>
+      {isLoading && <div>Loading</div>}
+      {!isLoading && (
+        <BrowserRouter>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="login" element={<Login />} />
+            <Route path="account" element={<CreateAccount />} />
+
+            <Route
+              path="dashboard"
+              element={
+                <AuthorizeRoute allowed={data}>
+                  <Dashboard />
+                </AuthorizeRoute>
+              }
+            >
+              <Route path="users" element={<Users />} />
+              <Route path="schedules" element={<Schedules />} />
+              <Route path="book" element={<Book />} />
+              <Route path="account" element={<Account />} />
+            </Route>
+
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+        </BrowserRouter>
+      )}
+    </>
   );
 };

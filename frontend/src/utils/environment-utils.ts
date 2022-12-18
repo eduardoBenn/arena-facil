@@ -8,5 +8,10 @@ declare global {
   }
 }
 
+// process.env.NODE_ENV
+
 export const environmentVariables: EnvironmentVariables =
-  window.__env || ({} as EnvironmentVariables);
+  window.__env ||
+  ({
+    API_URL: "http://localhost:8080",
+  } as EnvironmentVariables);

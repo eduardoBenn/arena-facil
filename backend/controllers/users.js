@@ -9,7 +9,7 @@ const getUsers = (req, res) => {
 const getUser = (req, res) => {
   User.findOne({ _id: req.params.userID })
     .then((result) => res.status(200).json({ result }))
-    .catch(() => res.status(404).json({ msg: "Product not found" }));
+    .catch(() => res.status(404).json({ msg: "User not found" }));
 };
 
 const updateUser = (req, res) => {

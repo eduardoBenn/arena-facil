@@ -15,6 +15,7 @@ import { Icon } from "@iconify/react";
 import { Copyright } from "../../components/Copyright";
 import axios from "axios";
 import Cookies from "universal-cookie";
+import { environmentVariables } from "../../utils/environment-utils";
 const cookies = new Cookies();
 
 const theme = createTheme();
@@ -23,12 +24,14 @@ export const Login = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [register, setRegister] = useState(false);
 
+  cookies.remove("TOKEN");
+
   const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     const configuration = {
       method: "post",
-      url: "http://localhost:8080/api/auth/login/",
+      url: `${environmentVariables.API_URL}/api/auth/login/`,
       data: {
         email: data.get("email"),
         password: data.get("password"),
@@ -37,8 +40,11 @@ export const Login = () => {
 
     axios(configuration)
       .then((result) => {
-        console.log(result.data);
-        console.log(result.status);
+        cookies.set("TOKEN", result.data.token, {
+          path: "/",
+        });
+
+        window.location.href = "/dashboard";
       })
       .catch((error) => {
         console.log(error);

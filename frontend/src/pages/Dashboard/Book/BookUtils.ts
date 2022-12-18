@@ -23,7 +23,7 @@ export const columns: GridColDef[] = [
 ];
 
 export const fetchBooks = async (): Promise<BookType[]> => {
-  const response = await axios.get(`${env}/api/book`);
+  const response = await axios.get(`${env.API_URL}/api/book`);
   return response.data.result;
 };
 
