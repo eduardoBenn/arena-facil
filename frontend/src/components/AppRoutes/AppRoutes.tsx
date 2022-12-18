@@ -12,6 +12,7 @@ import { useQueryUserPermission } from "../../queries/useQueryUserPermission";
 import { AuthorizeRoute } from "./AuthorizeRoute";
 import { Reservation } from "../../pages/Dashboard/Reservation";
 import { ScheduleMatches } from "../../pages/Dashboard/ScheduleMatches";
+import { PlayerAccount } from "../../pages/Dashboard/PlayerAccount";
 
 export const AppRoutes = () => {
   const { data, isLoading } = useQueryUserPermission();
@@ -37,6 +38,7 @@ export const AppRoutes = () => {
               <Route path="users" element={<Users />} />
               <Route path="reservation" element={<Reservation />} />
               <Route path="matches" element={<ScheduleMatches />} />
+              <Route path="playerAccount" element={<PlayerAccount />} />
               <Route
                 path="schedules"
                 element={<Schedules user={data?.userId} />}

@@ -9,6 +9,16 @@ export const UserItens = [
     url: "/dashboard/schedules",
     isAdmin: false,
   },
+  {
+    itemText: "Meus dados",
+    url: "/dashboard/playerAccount",
+    isAdmin: false,
+  },
+  {
+    itemText: "Jogadores extras",
+    url: "/dashboard/playerAccount",
+    isAdmin: false,
+  },
 ];
 
 export const AdminItens = [

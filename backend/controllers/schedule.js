@@ -2,6 +2,15 @@ const Schedule = require("../db/models/schedule");
 const Book = require("../db/models/book");
 const User = require("../db/models/user");
 
+const addSchedule = (req, res) => {
+  Schedule.create(req.body)
+    .then((result) => res.status(200).json({ result }))
+    .catch((error) => {
+      console.log(error);
+      return res.status(500).json({ msg: error });
+    });
+};
+
 const getSchedules = (req, res) => {
   Schedule.find({})
     .then((result) => res.status(200).json({ result }))
@@ -22,15 +31,6 @@ const getSchedule = (req, res) => {
     .catch(() => res.status(404).json({ msg: "Schedule not found" }));
 };
 
-const addSchedule = (req, res) => {
-  Schedule.create(req.body)
-    .then((result) => res.status(200).json({ result }))
-    .catch((error) => {
-      console.log(error);
-      return res.status(500).json({ msg: error });
-    });
-};
-
 const deleteSchedule = (req, res) => {
   Schedule.findOneAndDelete({ _id: req.params.bookID })
     .then((result) => res.status(200).json({ result }))
@@ -38,9 +38,9 @@ const deleteSchedule = (req, res) => {
 };
 
 module.exports = {
+  addSchedule,
   getSchedule,
   getSchedules,
-  addSchedule,
   deleteSchedule,
   getUserSchedules,
 };
