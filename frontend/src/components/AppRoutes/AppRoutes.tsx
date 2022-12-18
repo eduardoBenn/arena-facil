@@ -28,7 +28,7 @@ export const AppRoutes = () => {
               path="dashboard"
               element={
                 <AuthorizeRoute allowed={data}>
-                  <Dashboard user={data.userId} />
+                  <Dashboard user={data?.userId} />
                 </AuthorizeRoute>
               }
             >

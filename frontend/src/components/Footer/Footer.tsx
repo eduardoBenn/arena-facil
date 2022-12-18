@@ -1,6 +1,6 @@
-import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
-import { Copyright } from '../Copyright/Copyright';
+import Box from "@mui/material/Box";
+import Container from "@mui/material/Container";
+import { Copyright } from "../Copyright/Copyright";
 
 interface FooterProps {
   description: string;
@@ -8,10 +8,8 @@ interface FooterProps {
 }
 
 export const Footer = (props: FooterProps) => {
-  console.log(props);
-
   return (
-    <Box component="footer" sx={{ bgcolor: 'background.paper', py: 6 }}>
+    <Box component="footer" sx={{ bgcolor: "background.paper", py: 6 }}>
       <Container maxWidth="lg">
         {/* <Typography variant="h6" align="center" gutterBottom>
           {title}
@@ -28,4 +26,4 @@ export const Footer = (props: FooterProps) => {
       </Container>
     </Box>
   );
-}
+};
